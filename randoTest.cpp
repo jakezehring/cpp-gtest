@@ -23,8 +23,14 @@ class RandoTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
 
-TEST(RandoTest, allChildrenSmile)
+TEST(RandoTest, nearestToZero)
 {
 	Rando rando;
-	ASSERT_TRUE( rando.shouldWorry(true,true,true) );
+	ASSERT_EQ( rando.nearestToZero(1, 2), 1);
+  ASSERT_EQ( rando.nearestToZero(3, 2), 2);
+  ASSERT_EQ( rando.nearestToZero(0, 2), 2);
+  ASSERT_EQ( rando.nearestToZero(1, 0), 1);
+  ASSERT_EQ( rando.nearestToZero(-1, 2), -1);
+  ASSERT_EQ( rando.nearestToZero(2, -1), -1);
+  ASSERT_EQ( rando.nearestToZero(-2, -1), -1);
 }
